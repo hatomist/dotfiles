@@ -1,36 +1,49 @@
 #!/usr/bin/env zsh
 
-opts=(
-  --zdotdir '.zsh'
-  --repo 'https://gitlab.com/Prototik/dotfiles.git'
-)
+zdotdir='.zsh'
+repo='https://gitlab.com/Prototik/dotfiles.git'
 
-zparseopts -A opts -K -- -zdotdir: -repo:
+while getopts ':z:r:' arg; do
+  case "$arg" in
+    z)
+      zdotdir="$OPTARG"
+      ;;
+    r)
+      repo="$OPTARG"
+      ;;
+    *)
+      echo "Usage: zsh install [-z dir] [-r repo]"
+      ;;
+  esac
+done
 
-TARGET=$(realpath --relative-base="$HOME" "${opts[--zdotdir]}")
+TARGET=$(realpath -m --relative-base="$HOME" "$zdotdir")
 
 case "$TARGET" in
-  /)
+  /*)
     echo " ### Installing outside of home directory"
     ABSOLUTE_TARGET="$TARGET"
     ENV_TARGET="$TARGET"
     ;;
   *)
-    ABSOLUTE_TARGET=$(realpath "$TARGET")
+    ABSOLUTE_TARGET=$(realpath -m "$HOME/$TARGET")
     ENV_TARGET="\$HOME/$TARGET"
     ;;
 esac
 
-echo " # Installing dotfiles to $ABSOULTE_TARGET"
+echo " # Installing dotfiles to $ABSOLUTE_TARGET"
 
-[[ -d "$ABSOULTE_TARGET ]] && {
-  echo "Target directory already exists! Either remove the old one or specify another dir with --zdotdir option" >&2
+[[ -d "$ABSOLUTE_TARGET" ]] && {
+  echo "Target directory already exists! Either remove the old one or specify another dir with -z option" >&2
   exit 1
 }
 
-git clone "${opts[--repo]}" "$ABSOULTE_TARGET"
+mkdir -p $(dirname "$ABSOLUTE_TARGET")
+
+git clone "$repo" "$ABSOLUTE_TARGET"
 
 touch "$HOME/.zshenv"
-sed -i "$HOME/.zshenv" -e '/^ZDOTENV=/d' -e "1s/^/ZDOTENV=$ENV_TARGET\n/"
+sed -i "$HOME/.zshenv" -e "1iZDOTDIR=$ENV_TARGET" -e '/^ZDOTDIR=/d'
 
 echo "Done! Open a new terminal to see changes."
+

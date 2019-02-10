@@ -10,7 +10,7 @@ source ~/.zshenv
 git clone https://gitlab.com/Prototik/dotfiles.git "$ZDOTDIR"
 ```
 
-_Optional (but **highly recommend**) step_
+_Optional (but **highly recommend**) step:_  
 Generate zkbd mapping for you terminal:
 ```zsh
 autoload zkbd && zkbd

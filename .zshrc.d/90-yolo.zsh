@@ -4,6 +4,9 @@ alias yolo='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
 
 [[ "$ZDOTDIR" == "$HOME" ]] || function rc {
   case "$1" in
+    cd)
+      cd "$ZDOTDIR"
+      ;;
     yolo)
       git -C "$ZDOTDIR" add "$ZDOTDIR"
       git -C "$ZDOTDIR" commit -m "$(curl -s whatthecommit.com/index.txt)" "${@:2}"

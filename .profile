@@ -1,0 +1,2 @@
+EDITOR=nano
+PAGER=less

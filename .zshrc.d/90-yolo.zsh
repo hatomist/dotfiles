@@ -7,6 +7,10 @@ alias yolo='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
     cd)
       cd "$ZDOTDIR"
       ;;
+    update)
+      git -C "$ZDOTDIR" pull
+      zplug update
+      ;;
     yolo)
       git -C "$ZDOTDIR" add "$ZDOTDIR"
       git -C "$ZDOTDIR" commit -m "$(curl -s whatthecommit.com/index.txt)" "${@:2}"

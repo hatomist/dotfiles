@@ -10,8 +10,13 @@ function _install_symlink() {
 _install_method=_install_symlink
 
 function _install_dotfiles() {
+  local REPO="https://gitlab.com/Prototik/dotfiles.git"
   local TARGET_DIR=${ZDOTDIR:P}
-  local DOTFILES_DIR=${0:P:h}
+  local DOTFILES_DIR
+  case "$0" in
+    /*) DOTFILES_DIR="${0:P:h}"      ;;
+    *)  DOTFILES_DIR="$PWD/${0:P:h}" ;;
+  esac
   local REPO="https://gitlab.com/Prototik/dotfiles.git"
 
   if [[ "$TARGET_DIR" == "$DOTFILES_DIR" ]]; then

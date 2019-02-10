@@ -5,7 +5,7 @@
 _zkbd_missing=false
 
 function _bind_zkbd_key() {
-  [[ -n ${key[$1]} ]] && bindkey "$key{[$1]}" $2 || _zkbd_missing=true
+  [[ -n ${key[$1]} ]] && bindkey "${key[$1]}" $2 || _zkbd_missing=true
 }
 
 _bind_zkbd_key Left   backward-char

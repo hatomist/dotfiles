@@ -42,9 +42,11 @@ mkdir -p $(dirname "$ABSOLUTE_TARGET")
 
 git clone "$repo" "$ABSOLUTE_TARGET"
 
-touch "$HOME/.zshenv"
-sed -i '/^ZDOTDIR=/d' "$HOME/.zshenv" 
-sed -i "1iZDOTDIR=$ENV_TARGET" "$HOME/.zshenv"
+if [[ -e "$HOME/.zshenv" ]]; then
+  sed -i "$HOME/.zshenv" -e "1iZDOTDIR=$ENV_TARGET" -e '/^ZDOTDIR=/d'
+else
+  echo "ZDOTDIR=$ENV_TARGET" > "$HOME/.zshenv"
+fi
 
 echo "Done! Open a new terminal to see changes."
 

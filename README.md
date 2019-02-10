@@ -28,7 +28,7 @@ autoload zkbd && zkbd
 You rocks! Just restart your terminal (or do `source "$ZDOTDIR/.zshrc"`) to see changes
 
 ## Updating
-This template contains simple wrapper around `git` called `rc`. To update your dotfiles do `rc pull`.
+This template contains simple wrapper around `git` called `rc`. To update your dotfiles do `rc update`.
 
 ## Customizing
 Add new files to `$ZDOTDIR/.zshrc.d` with zsh extension and... that's it. You need more? Why?

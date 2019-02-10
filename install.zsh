@@ -43,7 +43,8 @@ mkdir -p $(dirname "$ABSOLUTE_TARGET")
 git clone "$repo" "$ABSOLUTE_TARGET"
 
 touch "$HOME/.zshenv"
-sed -i "$HOME/.zshenv" -e "1iZDOTDIR=$ENV_TARGET" -e '/^ZDOTDIR=/d'
+sed -i '/^ZDOTDIR=/d' "$HOME/.zshenv" 
+sed -i "1iZDOTDIR=$ENV_TARGET" "$HOME/.zshenv"
 
 echo "Done! Open a new terminal to see changes."
 

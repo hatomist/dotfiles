@@ -5,7 +5,7 @@ alias yolo='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
 [[ "${ZDOTDIR:-$HOME}" != "$HOME" ]] && function rc {
   case "$1" in
     cd)
-      cd "$ZDOTDIR"
+      cd "$ZDOTDIR/${@:2}"
       ;;
     update)
       git -C "$ZDOTDIR" pull && \

@@ -1,4 +1,4 @@
 [[ -e "$HOME/.profile" ]] && source "$HOME/.profile"
 
-EDITOR="${EDITOR:-nano}"
-PAGER="${PAGER:-less}"
+export EDITOR="${EDITOR:-nano}"
+export PAGER="${PAGER:-less}"

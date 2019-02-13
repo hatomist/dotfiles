@@ -7,5 +7,7 @@ zplug 'zsh-users/zsh-completions'
 if [ "x$TERM" = "xlinux" ]; then
   zplug 'dracula/zsh', as:theme
 else
+  SPACESHIP_DIR_TRUNC=7
+  SPACESHIP_DIR_TRUNC_PREFIX=…/
   zplug 'denysdovhan/spaceship-prompt', use:spaceship.zsh, as:theme
 fi

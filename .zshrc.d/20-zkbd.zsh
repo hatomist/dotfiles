@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
+[[ -e "${ZDOTDIR:-$HOME}/.zkbd/$TERM" ]] && source "${ZDOTDIR:-$HOME}/.zkbd/$TERM"
+[[ -e "${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR" ]] && source "${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR"
 [[ -e "${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE" ]] && source "${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE"
 [[ -e "${ZDOTDIR:-$HOME}/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}" ]] && source "${ZDOTDIR:-$HOME}/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}"
 

@@ -5,7 +5,7 @@ Collection of standalone configs for zsh for easy-to-use setup for new machines 
 Main method of installation involves moving (almost) all zsh related things to separate directory and cloning this repo to that directory:
 
 ```zsh
-zsh <(curl -Ls https://tinyurl.com/kk-files)
+zsh <(curl -Ls https://tinyurl.com/hat-files)
 ```
 If you don't trust tinyurl (and you do it right) or want to review that script - use `https://gitlab.com/Prototik/dotfiles/raw/master/install.zsh` instead.
 

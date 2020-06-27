@@ -16,6 +16,8 @@ zkbd_mapping[Down]=down-line-or-history
 zkbd_mapping[Home]=beginning-of-line
 zkbd_mapping[End]=end-of-line
 zkbd_mapping[Delete]=delete-char
+zkbd_mapping[CtrlLeft]=backward-word
+zkbd_mapping[CtrlRight]=forward-word
 
 function __kk::zkbd::load() {
   [[ -e "$1" ]] && source "$1"
